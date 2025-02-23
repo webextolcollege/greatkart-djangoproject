@@ -40,8 +40,8 @@ def register(request):
             to_email = email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
             send_email.send()
-            messages.success(request, 'Registration successful')
-            return redirect('register')
+            # messages.success(request, 'Thank you for registering with us. We have sent you a verification email to your email address[aijazaliinayatbutt@gmail.com]. please verify it.')
+            return redirect('/accounts/login/?command=verification&email='+email)
 
     else:
         form = RegistrationForm()
@@ -85,5 +85,4 @@ def activate(request, uidb64, token):
         messages.error(request, 'Invalid activation link')
         return redirect('register')
     
-def activate(request, uidb64, token):
-    return HttpResponse('Okay')
+        
